@@ -1,0 +1,21 @@
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        int lc = 0;
+        HashSet<Integer> set = new HashSet<>();
+        for(int i = 0; i < nums.length; i++) {
+            set.add(nums[i]);
+        }
+        for(int i = 0; i < nums.length; i++) {
+            if(!set.contains(nums[i]-1)) {
+                int count = 1;
+                int num = nums[i]+1;
+                while(set.contains(num)) {
+                    count++;
+                    num++;
+                }
+                lc = Math.max(lc, count);
+            } 
+        }
+        return lc;
+    }
+}
